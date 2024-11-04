@@ -1,3 +1,5 @@
+import numpy as np
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -20,7 +22,7 @@ class DoublyLinkedList:
 
     def __init__(self, array: list):
         # TODO
-        assert isinstance(array, list)
+        assert isinstance(array, list) or isinstance(array, np.ndarray), "The input must be a list!"
 
         self.content = []
         try:
