@@ -1,1 +1,4 @@
 .venv/
+__pycache__
+algorithms/__pycache__/
+dataStructures/__pycache__/
