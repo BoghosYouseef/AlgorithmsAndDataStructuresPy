@@ -23,18 +23,33 @@ class Node:
         return self.prev is not None
 
     def __eq__(self, target):
-        try:
+        if not isinstance(target, Node):
+            return NotImplemented
+
+        else:
             firstCondition = self.value == target.value 
-            secondCondition = self.prev == target.prev 
-            thirdCondition = self.next == target.next 
-            if firstCondition and secondCondition and thirdCondition:
+            secondCondition = self.prev.__hash__() == target.__hash__()
+            # if not (firstCondition and secondCondition):
+            #     return False
+            
+            # currentSmallestUniqueChainSelf = [self.value]
+            # currentSmallestUniqueChainTarget = [target.value]
+ 
+            if firstCondition and secondCondition:
                 return True
             else:
                 return False
-        except Exception:
-            return False
 
-    
+    def __hash__(self):
+        
+        if self.hasNext() and self.hasPrev():
+            return hash((self.prev.value, self.value, self.next.value))
+        elif self.hasNext() and not self.hasPrev():
+            return hash((str(None), self.value, self.next.value))
+        elif not self.hasNext() and self.hasPrev():
+            return hash((self.prev.value, self.value, str(None)))
+        else:
+            return hash(str(self.value))
 class DoublyLinkedList:
 
     def __init__(self, array: list):

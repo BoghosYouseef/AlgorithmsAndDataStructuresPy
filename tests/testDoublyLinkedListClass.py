@@ -22,7 +22,7 @@ class TestInitDoublyLinkedList(unittest.TestCase):
 
     @parameterized.expand([
         [[1,2,6,10,4,111,9580]],
-        [[1, True, 6, 10, False, None, 9580]],
+        [[1, True, 6, 10, False, "None", 9580]],
     ])
     def testAppendNode(self, array):
         #TODO
