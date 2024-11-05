@@ -1,3 +1,8 @@
+import logging
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 import numpy as np
 
 class Node:
@@ -22,36 +27,51 @@ class DoublyLinkedList:
 
     def __init__(self, array: list):
         # TODO
-        assert isinstance(array, list) or isinstance(array, np.ndarray), "The input must be a list!"
-
-        self.content = []
         try:
+            assert isinstance(array, list) or isinstance(array, np.ndarray), "The input must be a list!"
+            self._content = []
+            self.firstNode, self.lastNode = None, None
             if len(array) <= 1:
                 raise ValueError
             
-            firstNode = Node(value=array[0])
-            self.content.append(firstNode)
+            self.firstNode = Node(value=array[0])
+            self._content.append(self.firstNode)
             
             for i in range(1,len(array)-1):
                 newNode = Node(value=array[i])
-                newNode.setPrev(self.content[i-1])
-                self.content.append(newNode)
+                newNode.setPrev(self._content[i-1])
+                self._content.append(newNode)
             
-            lastNode = Node(value=array[-1])
-            lastNode.setPrev(self.content[-2])
-            self.content.append(lastNode)
-            for i in range(len(self.content)-1):
-                self.content[i].setNext(self.content[i+1])
+            self.lastNode = Node(value=array[-1])
+            self.lastNode.setPrev(self._content[-2])
+            self._content.append(self.lastNode)
+            for i in range(len(self._content)-1):
+                self._content[i].setNext(self._content[i+1])
       
-        except ValueError as e:
-            pass
-        
+        except ValueError:
+            self._content = None
+            logger.error("The list must contain at least two elements!")
 
+        self.__check_if_none()
+
+        del self._content
+
+    def append(self, node):
+        try:
+            assert isinstance(node, Node), "Input is not a node!"
+            self._content[-1].setN
+        except ValueError:
+            logger.error("The element to append must be of type (class) <Node>")
+
+
+    def __check_if_none(self):
+        assert self._content != None, "The DoublyLinkedList object was not instantiated correctly."
     
     def __str__(self):
-        representation = "".join([str(i.value)+" <=> " if i.hasNext() else str(i.value)+" -> None" for i in self.content])
-        if self.content[0].hasPrev():
-            representation = self.content[0].prev()+ " <=> " + representation
-        else:
-            representation = "None"+ " <- " + representation
+        representation = "None <-"
+        currentNode = self.firstNode
+        while currentNode.hasNext():
+            representation += " " + str(currentNode.value) + " <=>"
+            currentNode = currentNode.next
+        representation += " " + str(currentNode.value) + " -> None"
         return representation

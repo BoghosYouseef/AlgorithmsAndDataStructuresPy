@@ -1,5 +1,7 @@
 import logging
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 import os
 import sys
 import unittest
@@ -22,5 +24,6 @@ def run_tests():
     return exitCode
 
 if __name__ == '__main__':
+    logger.info("[starting tests]")
     exitCode = run_tests() # returns True or False
     sys.exit(not exitCode)   # should be True
