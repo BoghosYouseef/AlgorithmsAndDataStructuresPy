@@ -4,7 +4,7 @@ logger = logging.getLogger(__name__)
 
 import numpy as np
 
-class Node:
+class DoublyLinkedNode:
     def __init__(self, value):
         self.value = value
         # self.position = 0
@@ -23,7 +23,7 @@ class Node:
         return self.prev is not None
 
     def __eq__(self, target):
-        if not isinstance(target, Node):
+        if not isinstance(target, DoublyLinkedNode):
             return NotImplemented
 
         else:
@@ -54,15 +54,15 @@ class DoublyLinkedList:
             if len(array) <= 1:
                 raise ValueError
             
-            self.firstNode = Node(value=array[0])
+            self.firstNode = DoublyLinkedNode(value=array[0])
             self._content.append(self.firstNode)
             
             for i in range(1,len(array)-1):
-                newNode = Node(value=array[i])
+                newNode = DoublyLinkedNode(value=array[i])
                 newNode.setPrev(self._content[i-1])
                 self._content.append(newNode)
             
-            self.lastNode = Node(value=array[-1])
+            self.lastNode = DoublyLinkedNode(value=array[-1])
             self.lastNode.setPrev(self._content[-2])
             self._content.append(self.lastNode)
             for i in range(len(self._content)-1):
@@ -78,7 +78,7 @@ class DoublyLinkedList:
 
     def append(self, node):
         try:
-            assert isinstance(node, Node), "Input is not a node!"
+            assert isinstance(node, DoublyLinkedNode), "Input is not a node!"
             currentNode = self.firstNode
             while currentNode.hasNext():
                 currentNode = currentNode.next

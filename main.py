@@ -4,7 +4,7 @@ logging.basicConfig(level=logging.DEBUG)
 from pdb import set_trace
 
 from utils.pathHandling import getDataStructuresAbsPath
-from dataStructures.linkedList import Node, DoublyLinkedList
+from dataStructures.linkedList import DoublyLinkedNode, DoublyLinkedList
 
 if __name__ == "__main__":
     print("YO")
@@ -12,6 +12,6 @@ if __name__ == "__main__":
     list1 = [1, 2, 1, 5, 1,2, 1, 0, 144]
     dll = DoublyLinkedList(array=list1)
     
-    newNode = Node(value=829357)
+    newNode = DoublyLinkedNode(value=829357)
     dll.append(newNode)
     pass

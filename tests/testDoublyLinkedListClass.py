@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 from parameterized import parameterized
-from dataStructures.linkedList import Node, DoublyLinkedList
+from dataStructures.linkedList import DoublyLinkedNode, DoublyLinkedList
 
 
 class TestInitDoublyLinkedList(unittest.TestCase):
@@ -28,7 +28,7 @@ class TestInitDoublyLinkedList(unittest.TestCase):
         #TODO
         dll = DoublyLinkedList(array=array)
         previousLastNode = dll.lastNode
-        newNode = Node(value="testing")
+        newNode = DoublyLinkedNode(value="testing")
         dll.append(newNode)
         self.assertEqual(dll.lastNode, newNode)
         self.assertEqual(previousLastNode, newNode.prev)
