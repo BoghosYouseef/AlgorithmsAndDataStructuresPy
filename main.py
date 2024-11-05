@@ -6,5 +6,4 @@ if __name__ == "__main__":
     dll = DoublyLinkedList(array=list1)
     dll = DoublyLinkedList(array="list1")
     print(dll)
-    print("yo")
     pass
