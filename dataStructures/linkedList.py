@@ -1,5 +1,4 @@
 import logging
-import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -22,6 +21,19 @@ class Node:
     
     def hasPrev(self):
         return self.prev is not None
+
+    def __eq__(self, target):
+        try:
+            firstCondition = self.value == target.value 
+            secondCondition = self.prev == target.prev 
+            thirdCondition = self.next == target.next 
+            if firstCondition and secondCondition and thirdCondition:
+                return True
+            else:
+                return False
+        except Exception:
+            return False
+
     
 class DoublyLinkedList:
 
@@ -59,7 +71,17 @@ class DoublyLinkedList:
     def append(self, node):
         try:
             assert isinstance(node, Node), "Input is not a node!"
-            self._content[-1].setN
+            currentNode = self.firstNode
+            while currentNode.hasNext():
+                currentNode = currentNode.next
+            
+            currentNode.setNext(node)
+            node.setNext(None)
+            node.setPrev(currentNode)
+            self.lastNode = node
+            logger.debug(f"Node with value {node.value} has been appended to the doubly linked list!")
+            logger.debug(self)
+
         except ValueError:
             logger.error("The element to append must be of type (class) <Node>")
 
