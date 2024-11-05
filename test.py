@@ -1,6 +1,7 @@
 import logging
 logging.basicConfig(level=logging.INFO)
 import os
+import sys
 import unittest
 from tests import testDoublyLinkedListClass, testPathHandlingFunc 
 
@@ -17,6 +18,9 @@ def run_tests():
         test_suite.addTests(test_loader.loadTestsFromModule(module))
     
     # Run the test suite
-    unittest.TextTestRunner(verbosity=2).run(test_suite)
+    exitCode = unittest.TextTestRunner(verbosity=2).run(test_suite).wasSuccessful()
+    return exitCode
+
 if __name__ == '__main__':
-    run_tests()
+    exitCode = run_tests()
+    sys.exit(not exitCode)   # should be True
