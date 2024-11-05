@@ -33,9 +33,9 @@ class TestInitDoublyLinkedList(unittest.TestCase):
         self.assertEqual(dll.lastNode, newNode)
         self.assertEqual(previousLastNode, newNode.prev)
         self.assertEqual(previousLastNode.next, newNode)
-        self.assertTrue(previousLastNode.hasNext)
-        self.assertTrue(dll.lastNode.hasPrev)
-        self.assertFalse(dll.lastNode.hasNext)
+        self.assertTrue(previousLastNode.hasNext())
+        self.assertTrue(dll.lastNode.hasPrev())
+        self.assertFalse(dll.lastNode.hasNext())
         
     def testAppendNoneNode(self):
         #TODO

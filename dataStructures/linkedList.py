@@ -28,7 +28,7 @@ class Node:
 
         else:
             firstCondition = self.value == target.value 
-            secondCondition = self.prev.__hash__() == target.__hash__()
+            secondCondition = self.__hash__() == target.__hash__()
             # if not (firstCondition and secondCondition):
             #     return False
             
