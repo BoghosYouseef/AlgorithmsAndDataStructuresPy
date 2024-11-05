@@ -41,17 +41,10 @@ class Node:
                 return False
 
     def __hash__(self):
+        return hash(repr(self))
         
-        if self.hasNext() and self.hasPrev():
-            return hash((self.prev.value, self.value, self.next.value))
-        elif self.hasNext() and not self.hasPrev():
-            return hash((str(None), self.value, self.next.value))
-        elif not self.hasNext() and self.hasPrev():
-            return hash((self.prev.value, self.value, str(None)))
-        else:
-            return hash(str(self.value))
-class DoublyLinkedList:
 
+class DoublyLinkedList:
     def __init__(self, array: list):
         # TODO
         try:
