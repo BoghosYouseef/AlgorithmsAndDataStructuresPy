@@ -22,5 +22,5 @@ def run_tests():
     return exitCode
 
 if __name__ == '__main__':
-    exitCode = run_tests()
+    exitCode = run_tests() # returns True or False
     sys.exit(not exitCode)   # should be True
