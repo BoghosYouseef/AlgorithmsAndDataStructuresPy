@@ -1,7 +1,9 @@
 import unittest
 import numpy as np
+from pdb import set_trace
 from parameterized import parameterized
-from dataStructures.linkedList import DoublyLinkedNode, DoublyLinkedList
+from dataStructures.nodes import Node,DoublyLinkedNode
+from dataStructures.linkedList import DoublyLinkedList
 
 
 class TestInitDoublyLinkedList(unittest.TestCase):
@@ -30,6 +32,8 @@ class TestInitDoublyLinkedList(unittest.TestCase):
         previousLastNode = dll.lastNode
         newNode = DoublyLinkedNode(value="testing")
         dll.append(newNode)
+
+        self.assertIsInstance(newNode, DoublyLinkedNode)
         self.assertEqual(dll.lastNode, newNode)
         self.assertEqual(previousLastNode, newNode.prev)
         self.assertEqual(previousLastNode.next, newNode)

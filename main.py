@@ -1,10 +1,12 @@
 import logging
+
+from dataStructures.nodes import DoublyLinkedNode
 logging.basicConfig(level=logging.DEBUG)
 
 from pdb import set_trace
 
 from utils.pathHandling import getDataStructuresAbsPath
-from dataStructures.linkedList import DoublyLinkedNode, DoublyLinkedList
+from dataStructures.linkedList import DoublyLinkedList
 
 if __name__ == "__main__":
     print("YO")

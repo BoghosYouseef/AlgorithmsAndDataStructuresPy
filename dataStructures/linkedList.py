@@ -1,48 +1,10 @@
 import logging
+
+from dataStructures.nodes import DoublyLinkedNode
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 import numpy as np
-
-class DoublyLinkedNode:
-    def __init__(self, value):
-        self.value = value
-        # self.position = 0
-        self.prev = None
-        self.next = None
-
-    def setNext(self, next):
-        self.next = next
-    def setPrev(self, prev):
-        self.prev = prev
-
-    def hasNext(self):
-        return self.next is not None
-    
-    def hasPrev(self):
-        return self.prev is not None
-
-    def __eq__(self, target):
-        if not isinstance(target, DoublyLinkedNode):
-            return NotImplemented
-
-        else:
-            firstCondition = self.value == target.value 
-            secondCondition = self.__hash__() == target.__hash__()
-            # if not (firstCondition and secondCondition):
-            #     return False
-            
-            # currentSmallestUniqueChainSelf = [self.value]
-            # currentSmallestUniqueChainTarget = [target.value]
- 
-            if firstCondition and secondCondition:
-                return True
-            else:
-                return False
-
-    def __hash__(self):
-        return hash(repr(self))
-        
 
 class DoublyLinkedList:
     def __init__(self, array: list):
