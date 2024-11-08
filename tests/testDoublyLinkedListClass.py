@@ -33,7 +33,7 @@ class TestInitDoublyLinkedList(unittest.TestCase):
         newNode = DoublyLinkedNode(value="testing")
         dll.append(newNode)
 
-        self.assertIsInstance(newNode, DoublyLinkedNode)
+        self.assertIsInstance(newNode, Node)
         self.assertEqual(dll.lastNode, newNode)
         self.assertEqual(previousLastNode, newNode.prev)
         self.assertEqual(previousLastNode.next, newNode)
