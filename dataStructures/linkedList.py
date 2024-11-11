@@ -40,7 +40,8 @@ class DoublyLinkedList:
 
     def append(self, node):
         try:
-            assert isinstance(node, DoublyLinkedNode), "Input is not a node!"
+            if not isinstance(node, DoublyLinkedNode):
+                raise ValueError(f"Input [{type(node)}: {node}] is not a node!")
             currentNode = self.firstNode
             while currentNode.hasNext():
                 currentNode = currentNode.next
@@ -52,10 +53,9 @@ class DoublyLinkedList:
             logger.debug(f"Node with value {node.value} has been appended to the doubly linked list!")
             logger.debug(self)
 
-        except ValueError:
-            logger.error("The element to append must be of type (class) <Node>")
-
-
+        except ValueError as e:
+            logger.error(f"{e} The element to append must be of type (class) <Node>.")
+            raise
     def __check_if_none(self):
         assert self._content != None, "The DoublyLinkedList object was not instantiated correctly."
     

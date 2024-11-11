@@ -15,6 +15,8 @@ class Node:
                 return True
             else:
                 return False
+    def __repr__(self):
+        return f"Node({type(self.value)} {self.value})"
 
 class DoublyLinkedNode(Node):
     def __init__(self, value):

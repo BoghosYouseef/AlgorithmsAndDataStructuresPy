@@ -27,7 +27,6 @@ class TestInitDoublyLinkedList(unittest.TestCase):
         [[1, True, 6, 10, False, "None", 9580]],
     ])
     def testAppendNode(self, array):
-        #TODO
         dll = DoublyLinkedList(array=array)
         previousLastNode = dll.lastNode
         newNode = DoublyLinkedNode(value="testing")
@@ -42,5 +41,10 @@ class TestInitDoublyLinkedList(unittest.TestCase):
         self.assertFalse(dll.lastNode.hasNext())
         
     def testAppendNoneNode(self):
-        #TODO
-        pass
+        dll = DoublyLinkedList(array=[1,2,6,10,4,111,9580])
+        self.assertRaises(ValueError, dll.append, 1)
+        self.assertRaisesRegex(ValueError,r"^Input \[<class 'int'>: 1\] is not a node!$", dll.append, 1)
+        self.assertRaisesRegex(ValueError,r"^Input \[<class 'str'>: 1\] is not a node!$", dll.append, "1")
+        self.assertRaisesRegex(ValueError,r"^Input \[<class 'str'>: \] is not a node!$", dll.append, "")
+        self.assertRaisesRegex(ValueError,r"^Input \[<class 'NoneType'>: None\] is not a node!$", dll.append, None)
+        self.assertRaisesRegex(ValueError,r"^Input \[<class 'dataStructures.nodes.Node'>: Node\(<class 'str'> None\)\] is not a node!$", dll.append, Node("None"))
