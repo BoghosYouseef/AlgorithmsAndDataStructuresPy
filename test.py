@@ -5,13 +5,14 @@ logger = logging.getLogger(__name__)
 import os
 import sys
 import unittest
-from tests import testDoublyLinkedListClass, testPathHandlingFunc 
+from tests import testDoublyLinkedListClass, testPathHandlingFunc, testBFSBinaryTree
 
 # code copied and modified from https://dnmtechs.com/running-unittest-main-for-all-source-files-in-a-subdirectory/
 
 modules = [
     testDoublyLinkedListClass,
-    testPathHandlingFunc
+    testPathHandlingFunc,
+    testBFSBinaryTree
 ]
 def run_tests():
     test_loader = unittest.TestLoader()

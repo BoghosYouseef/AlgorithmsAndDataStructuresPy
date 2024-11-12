@@ -8,13 +8,15 @@ import numpy as np
 
 class DoublyLinkedList:
     def __init__(self, array: list):
-        # TODO
         try:
-            assert isinstance(array, list) or isinstance(array, np.ndarray), "The input must be a list!"
+            if not (isinstance(array, list) or isinstance(array, np.ndarray)):
+                raise ValueError("The input must be a list!")
             self._content = []
             self.firstNode, self.lastNode = None, None
+
+            #TODO Handle a single node DLL
             if len(array) <= 1:
-                raise ValueError
+                raise ValueError("The List must")
             
             self.firstNode = DoublyLinkedNode(value=array[0])
             self._content.append(self.firstNode)
@@ -56,6 +58,7 @@ class DoublyLinkedList:
         except ValueError as e:
             logger.error(f"{e} The element to append must be of type (class) <Node>.")
             raise
+
     def __check_if_none(self):
         assert self._content != None, "The DoublyLinkedList object was not instantiated correctly."
     
